@@ -1,0 +1,15 @@
+[project]
+name = "docker-vol-backup"
+version = "1.0.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "J Stuff", email = "jstuff@j-stuff.net"},
+]
+dependencies = []
+requires-python = "==3.11.*"
+readme = "README.md"
+license = {text = "GNUGPL-3"}
+
+
+[tool.pdm]
+distribution = false
