@@ -5,6 +5,9 @@ import logging
 import shutil
 import datetime
 import schedule
+from dotenv import load_dotenv
+
+from backup import run_backup
 
 from init_cust_logging import initlogging
 
@@ -15,6 +18,11 @@ logging.info("Starting...")
 if os.path.exists('./cache'):
     logging.debug("Cache folder exists! Cleaning up...")
     shutil.rmtree('./cache')
+
+# if file ../.env exists, load it
+if os.path.exists('../.env'):
+    logging.debug("Loading .env file")
+    load_dotenv(dotenv_path='../.env')
 
 
 logging.info("Welcome! Preparing for first run...")
@@ -33,7 +41,7 @@ logging.info(f"Current time is: {now_human} ({now_unix})")
 def backup():
     logging.debug("Running backup...")
     # Hand off to backup script here
-    pass
+    run_backup()
 
 def run_threaded(job_func):
     logging.debug("Running job in a new thread. | Job: " + str(job_func))
