@@ -107,6 +107,7 @@ def _uploadAsMultipleFiles(archivePaths: list[str], time:str, name:str) -> None:
     logging.info(f"Uploaded {len(archivePaths)} parts of {name} to Discord")
 
 def run_backup():
+    logging.info("Starting backup...")
     volumesAsPaths = _getAllVolumePaths()
     current_unix = str(int(time.time()))
     _ensureCleanCacheDirExists()
@@ -121,3 +122,4 @@ def run_backup():
         logging.info(f"Backup of volume {volume} complete!")
         if os.getenv("LOG_LEVEL") != "DEBUG":
             _cleanCacheDir()
+    logging.info("Backup complete!")
